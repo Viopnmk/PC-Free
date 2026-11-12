@@ -8,8 +8,8 @@ services:
       VERSION: "10"
       USERNAME: ${WINDOWS_USERNAME:-kao}
       PASSWORD: ${WINDOWS_PASSWORD:-123456}
-      RAM_SIZE: "8G"
-      CPU_CORES: "4"
+      RAM_SIZE: "${RAM_SIZE:-8G}"
+      CPU_CORES: "${CPU_CORES:-4}"
       DISK_SIZE: "32G"
     cap_add:
       - NET_ADMIN
