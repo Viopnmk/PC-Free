@@ -1,14 +1,6 @@
 {
   "name": "PC-Free Windows 10",
   "image": "mcr.microsoft.com/devcontainers/universal:2",
-  "features": {
-    "ghcr.io/devcontainers/features/docker-in-docker:2": {
-      "version": "latest",
-      "moby": true
-    }
-  },
-  "runArgs": ["--init"],
-  "privileged": true,
   "forwardPorts": [8006, 3389],
   "portsAttributes": {
     "8006": { "label": "Windows 桌面 (网页版)", "onAutoForward": "notify" },

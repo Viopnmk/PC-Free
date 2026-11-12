@@ -12,6 +12,11 @@ echo "--- KVM ---"
 if [ -e /dev/kvm ]; then ls -l /dev/kvm; else echo "!! 没有 /dev/kvm: Windows 只能纯软件模拟, 会非常慢或起不来"; fi
 
 echo "========== 2/5 Docker =========="
+if grep -qi alpine /etc/os-release 2>/dev/null; then
+  echo "!! 当前是 Alpine 恢复容器: 说明这台 Codespace 的 devcontainer 构建失败了, 在这里装不了 Docker"
+  echo "!! 处理: 删掉这台 Codespace 重新建一台 (新配置已修好), 不要在这里继续重试"
+  exit 1
+fi
 if ! command -v docker >/dev/null 2>&1; then
   echo "Docker 没装, 现在用官方脚本自装 (约 1-2 分钟)..."
   curl -fsSL https://get.docker.com -o /tmp/get-docker.sh && sudo sh /tmp/get-docker.sh || { echo "!! Docker 安装失败, 把这屏截图给烤冷面"; exit 1; }
